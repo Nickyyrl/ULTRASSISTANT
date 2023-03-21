@@ -3,8 +3,7 @@ import random
 import time
 import os
 from difflib import get_close_matches
-import model.h5
-import chatbot_training.py
+
 
 class Produits:
 
