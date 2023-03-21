@@ -173,20 +173,6 @@ class ULTRALU:
     time.sleep(3)
     self.feedback()
 
-  def easter_egg(self):
-    infos = [
-      "ULTRALU a été crée en 1972",
-      "Mme Simonin est chez ULTRALU depuis 37 ans ! 37 ans de machines a calculer avec rouleau de papier.",
-      "Avant mon nom (CarinALU) etait inspirée de celui de Carine, en l'hommage de notre assisstante commerciale ",
-      "VOILAAAAAAAAAAAAA QUOI.",
-      "Ils ne savaient que c'etait impossible alors ils l'ont fait, Sylvain VETROFF",
-      "Quand on annonce un grand Schlem on fait le grand Schlem, Sylvain VETROFF",
-    ]
-    print("Chargement en cours... {}".format(random.choice(infos)))
-    for i in range(20):
-      print("[" + "#" * i + " " * (20 - i) + "]", end="\r")
-      time.sleep(0.3)
-
 
 produits = Produits()
 chatbot = ULTRALU(produits)
