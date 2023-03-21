@@ -1,0 +1,11 @@
+<!-- templates/result.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Résultat de la recherche</title>
+</head>
+<body>
+    <h1>Résultat de la recherche</h1>
+    <p>{{ reponses_positives[loop.index % 3] }} {{ produit }} - {{ description }}</p>
+</body>
+</html>
