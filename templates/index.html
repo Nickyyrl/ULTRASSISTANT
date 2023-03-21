@@ -2,40 +2,76 @@
   <head>
     <meta charset="UTF-8">
     <title>ULTRASSISTANT</title>
- <style>
+    <style>
       body {
-        overflow-x: hidden;
-        overflow-y: hidden;
-        background-color: #ffffff;
-        font-family: Arial, sans-serif;
+       
+
+  background: linear-gradient(-45deg, #2391e9, #00d4ff );
+  background-size: 400% 400%;
+  -webkit-animation: gradient 15s ease infinite;
+          animation: gradient 15s ease infinite;
+      font-family: Roboto, sans-serif;
         margin: 0;
         padding: 0;
+        overflow-x: hidden;
+        overflow-y: hidden;
       }
 
-      .background {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: #ffffff;
-        z-index: -1;
-        overflow: hidden;
-      }
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  25% {
+    background-position: 25% 25%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  75% {
+    background-position: 25% 25%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}   
 
-      .background:before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-image: linear-gradient(to bottom, #0077c0, #005a9e);
-        z-index: -1;
-        animation: animateBackground 10s ;
-      }
-
-     
+@import url(//fonts.googleapis.com/css?family=Lato:300:400);
+.waves {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 15vh;
+  margin-bottom: -7px; /*Fix for safari gap*/
+  min-height: 100px;
+  max-height: 150px;
+}
+.parallax > use {
+  animation: move-forever 25s cubic-bezier(.55,.5,.45,.5)     infinite;
+}
+.parallax > use:nth-child(1) {
+  animation-delay: -2s;
+  animation-duration: 7s;
+}
+.parallax > use:nth-child(2) {
+  animation-delay: -3s;
+  animation-duration: 10s;
+}
+.parallax > use:nth-child(3) {
+  animation-delay: -4s;
+  animation-duration: 13s;
+}
+.parallax > use:nth-child(4) {
+  animation-delay: -5s;
+  animation-duration: 20s;
+}
+@keyframes move-forever {
+  0% {
+   transform: translate3d(-90px,0,0);
+  }
+  100% { 
+    transform: translate3d(85px,0,0);
+  }
+}
 
       .wrapper {
         max-width: 800px;
@@ -45,11 +81,13 @@
       }
 
       .container {
-        background-color: #ffffff;
-        border-radius: 10px;
-        box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
+        background-color: rgba(255, 255, 255, 0.8);
+        border-radius: 20px;
+        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
         padding: 40px;
         margin-bottom: 40px;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
       }
 
       h1 {
@@ -91,6 +129,7 @@
         outline: none;
         width: 100%;
         transition: box-shadow 0.3s ease-in-out;
+        background-color: rgba(255, 255, 255, 0.8);
       }
 
       input[type="text"]:focus {
@@ -106,6 +145,12 @@
         font-size: 1.2rem;
         font-weight: bold;
         padding: 15px 30px;
+
+
+
+
+
+
         margin-bottom: 20px;
         cursor: pointer;
         transition: background-color 0.3s ease-in-out;
@@ -114,7 +159,7 @@
     background-color: #005a9e;
   }
       .encart {
-  background-color: #F5F5F5;
+  background-color: #ffffff;
   border: 1px solid #D3D3D3;
   padding: 10px;
 }
@@ -123,14 +168,76 @@
        position: center;
     margin: 20px 0;
   }
+  .feedback-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.like-btn,
+.dislike-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  margin: 0 10px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.like-btn:hover,
+.dislike-btn:hover {
+  background-color: #f0f0f0;
+}
+
+.like-btn {
+  background-color: #4caf50;
+  color: #fff;
+}
+
+.dislike-btn {
+  background-color: #f44336;
+  color: #fff;
+  position: center;
+}
+
+.ultralu{
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  margin: 0 10px;
+  font-size: 16px;
+  text-
+  cursor: pointer;
+  background-color: #ffffff;
+  
+  position: center;
+}
 </style>
+
   </head>
   <body>
-       <a href="https://www.ultralu.com"> Pour plus d'information n'hesitez pas a visiter notre site !</a>
+       <a class ="ultralu" href="https://www.ultralu.com"> Pour plus d'information n'hesitez pas a visiter notre site !</a>
+    <div class="gradient-background">
+      <div>
+<svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+<defs>
+<path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+</defs>
+<g class="parallax">
+<use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.7" />
+<use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.5)" />
+<use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.3)" />
+<use xlink:href="#gentle-wave" x="48" y="7" fill="#fff" />
+</g>
+</svg>
+</div>
     <div class="wrapper">
       <div class="container">
-        <h1>ULTRASSISTANT</h1>
-        <h4>Release 2.0.0 - (Version 2.18.0)</h4>
+        <h1 id="gradient-background">ULTRASSISTANT</h1>
+        <h4>Release 3.0.2 - (Version 2.20.1)</h4>
         <form method="POST">
           <label for="text">Quel type de produit recherchez vous ?</label>
           <input type="text" name="text" id="text" placeholder="Posez votre question ici...">
@@ -138,7 +245,28 @@
           </form>
           {% if reponse %}
             <p class="encart" id="reponse"></p>
-            <script>
+            <div class="feedback-buttons">
+  <div id="result"></div>
+
+<script>
+const button = document.querySelector(".like-btn");
+
+button.addEventListener('click', () => {
+  document.body.classList.add('victory'); // ajouter la classe "victory" pour l'animation
+  setTimeout(() => {
+    document.body.classList.remove('victory'); // enlever la classe "victory" après l'animation
+  }, 1000);
+});
+</script>
+  <button class="dislike-btn" onclick="getProduitsProches()">Cette réponse ne m'a pas aidé !</button>
+  <br>
+  <div id="suggestions" style="display: none;">
+  <h3>Produits similaires:</h3>
+  <div id="produits-proches">
+  </div>
+</div>
+</div>
+<script>
               var reponse = "{{ reponse }}";
               var i = 0;
               function ecrire() {
@@ -146,11 +274,41 @@
                   document.getElementById("reponse").innerHTML += reponse.charAt(i);
                   i++;
                   setTimeout(ecrire, 50); // délai de 50 ms entre chaque caractère
+                  
       }
     }
     ecrire();
+    function getProduitsProches() {
+  fetch('/feedback', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ 'isLike': false, 'responseId': 'feedback' })
+  })
+  .then(response => response.json())
+  .then(data => {
+    var produitsProches = data['produits_proches'];
+    var produitsProchesDiv = document.getElementById('produits-proches');
+    produitsProchesDiv.innerHTML = '';
+    for (var i = 0; i < produitsProches.length; i++) {
+  var produitDiv = document.createElement('div');
+  produitDiv.innerHTML = produitsProches[i] + "<br> <br> <br>";
+  produitsProchesDiv.appendChild(produitDiv);
+}
+    var reponseDiv = document.getElementById('reponse');
+    reponseDiv.innerHTML = "Désolé de l'apprendre, voici une liste de produits qui devrait vous aider : " + produitsProches;
+  })
+  .catch((error) => {
+    console.error('Error:', error);
+  });
+}
+
+
+
   </script>
 {% endif %}
+
 
         <br>
           <p><strong>Voici les règles et les conseils d'utilisation du programme :</strong><br><br>
