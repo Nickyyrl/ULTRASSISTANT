@@ -2,9 +2,7 @@ import difflib
 import random
 import time
 import os
-import chatbot_training
-import model.h5
-
+from difflib import get_close_matches
 
 
 class Produits:
@@ -109,6 +107,19 @@ class Produits:
         score = s.ratio()
     return produit, self.produits[produit] if produit is not None else None
 
+  def feedback(self, demande):
+    produits_proches = []
+    scores_produits = {}
+    for k in self.produits.keys():
+        s = difflib.SequenceMatcher(None, demande.lower(), k.lower())
+        scores_produits[k] = s.ratio()
+    produits_tries = sorted(scores_produits.items(), key=lambda x: x[1], reverse=True)
+    for i in range(5):
+        if i >= len(produits_tries):
+            break
+        produits_proches.append(produits_tries[i][0])
+    return produits_proches
+
 
 class ULTRALU:
 
@@ -128,50 +139,16 @@ class ULTRALU:
       "Je ne trouve aucun produit qui corresponde à cette demande. Essayez une nouvelle demande."
     ]
 
+
   def repondre_demande(self):
     produit, description = self.produits.chercher_produit(self.demande)
     if produit is not None:
       print("\n" + random.choice(self.reponses_positives) + "\n")
       print(description + " : " + produit)
-      return description, produit
-    else:
-      print(random.choice(self.reponses_negatives))
+      produits_proches = self.produits.feedback(self.demande) # <-- modifier ici
+      return description, produit, produits_proches
 
-  def feedback(self):
-    satisfaction = str(
-      input(
-        "[ULTRASSISTANT] : Cette réponse vous a-t-elle aidé ? (oui/non) \n >>> "
-      ))
-    if satisfaction.lower() == "oui":
-      continuer = str(
-        input(
-          "[ULTRASSISTANT] : Souhaitez-vous chercher un autre produit ? (oui/non) \n >>>"
-        )).lower()
-      if continuer == "oui":
-        time.sleep(1)
-        self.bis()
-      elif continuer == "non":
-        print("[ULTRASSISTANT] : Merci pour votre visite sur Ultralu.com !")
-        time.sleep(2)
-    else:
-      produits_similaires = []
-      for produit, description in self.produits.produits.items():
-        s = difflib.SequenceMatcher(None, self.demande.lower(),
-                                    produit.lower())
-        if s.ratio() > 0.27 and produit not in produits_similaires:
-          produits_similaires.append(produit)
 
-      if len(produits_similaires) > 0:
-        print("\n [ULTRASSISTANT] : Voici quelques produits similaires :")
-        for produit in produits_similaires[:5]:
-          print(" - {} : {}".format(produit, self.produits.produits[produit]))
-      else:
-        print(
-          "[ULTRASSISTANT] : Je suis désolé, je n'ai pas pu trouver de produits similaires."
-        )
-        time.sleep(2)
-      self.bis()
-    
 
   def salutation(self):
     os.system("cls")
