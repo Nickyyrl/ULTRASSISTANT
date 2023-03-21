@@ -173,8 +173,6 @@ class ULTRALU:
     time.sleep(3)
     self.feedback()
 
-
-
 produits = Produits()
 chatbot = ULTRALU(produits)
 
