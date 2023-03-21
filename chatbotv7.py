@@ -2,6 +2,9 @@ import difflib
 import random
 import time
 import os
+import chatbot_training
+import model.h5
+
 
 
 class Produits:
